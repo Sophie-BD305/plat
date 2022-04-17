@@ -30,6 +30,7 @@ dependencies:
   firebase_core: ^1.14.1
   cloud_firestore: ^3.1.12
   provider: ^6.0.2
+  what3words: 3.1.0
   flutter:
     sdk: flutter
 

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:what3words/what3words.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -8,8 +9,18 @@ void main() async {
   runApp(const MyApp());
 }
 
+var api = What3WordsV3('what3words-api-key');
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  void wtw() async {
+    var words = await api
+        .convertTo3wa(Coordinates(51.508344, -0.12549900))
+        .language('en')
+        .execute();
+    return words.data()?.toJson();
+  }
 
   // This widget is the root of your application.
   @override
